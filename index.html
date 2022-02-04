@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Game On!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="tasks.json"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-success text-center">
+					Fun Game
+				</h3>
+				<p class="text-muted text-center">
+					<small>A fun simple game for all</small>
+				</p>
+			</div>
+		</div>
+		<div class="row" id="gameSetup">
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-3">
+				<span class="badge badge-default">Level: </span>
+					<select id="heatSelect" class="form-select" aria-label="Default select example">
+						<option selected value="1">Low</option>
+						<option value="2">Medium</option>
+						<option value="3">Hot</option>
+						<option value="4">V.Hot</option>
+					</select>
+			</div>
+			<div class="col-md-3">
+				<span class="badge badge-default">How many players: </span>
+				<select id="numPlayersSelect">
+					<option selected value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="col-md-3">
+				<span class="badge badge-default">Group setup: </span>
+				<select id="types">
+					<option selected value="fm">Female / Male</option>
+					<option value="ff">Female / Female</option>
+					<option value="mm">Male / Male</option>
+				</select>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<button type="button" class="btn btn-lg btn-outline-success" onclick="run()">
+				Ready!
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card__container mx-auto">
+				<div class="card__content" id="card__content">
+		<!--         card front -->
+				<div class="card__face card__front" id="card__front" onclick="flipCard()">
+					<!-- Content -->
+				</div>
+		<!--         card back -->
+				<div class="card__face card__back" id="card__back">
+					<br>
+					<button type="button"class="btn btn__back btn-outline-primary text-center btn__reveal" id="btn__reveal">
+						Reveal Task
+				  </button>
+					<button type="button" class="btn btn__back btn-outline-success text-center btn__complete" id="btn__complete">
+						Completed!
+				  </button>
+					<div id="card__back__content">
+					<!-- Content -->
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="text-muted text-center">
+				<small>Open source, free to play, fun for all!</small>
+			</p>
+		</div>
+	</div>
+  <script type="text/javascript">
+  	data='[{"heat":1,"task":"Test#1","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#2","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#3","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#4","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#5","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#6","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#7","playerNum":[2],"players":["fm"]},{"heat":1,"task":"Test#8","playerNum":[2],"players":["fm"]},{"heat":1,"task":"This is a test task where same sex couple is required","playerNum":[2],"players":["ff", "mm"]},{"heat":1,"task":"This is a test task where 1 m is required out of 3","playerNum":[3],"players":["ffm","fmm","mmm"]},{"heat":2,"task":"This is a test task where 2 or 4 players can play","playerNum":[2,4],"players":["fm","ffmm","mm","ff","mmmm","ffff"]}]'
+  	
+  	$(document).ready(function () {
+  		$("#numPlayersSelect").change(function () {
+  			var val = $(this).val();
+  			if (val == "2") {
+  				$("#types").html("<option selected value='fm'>Female / Male</option><option value='mm'>Male / Male</option><option value='ff'>Female / Female</option>");
+  			} else if (val == "3") {
+  				$("#types").html("<option value='ffm'>Female / Female / Male</option><option value='fmm'>Female / Male / Male</option><option value='mmm'>Male / Male / Male</option><option value='fff'>Female / Female / Female</option>");
+  			} else if (val == "4") {
+  				$("#types").html("<option value='ffmm'>Female / Male / Female / Male</option><option value='fmmm'>Female / Male / Male / Male</option><option value='fffm'>Female / Female / Female / Male</option><option value='mmmm'>Male / Male / Male / Male</option><option value='ffff'>Female / Female / Female / Female</option>");
+  			}
+  		});
+
+  	});
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
