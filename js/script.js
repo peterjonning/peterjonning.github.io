@@ -2,7 +2,7 @@ const cardContent = document.querySelector('.card__content');
 const btnComplete = document.querySelector('.btn__complete');
 const btnReveal = document.querySelector('.btn__reveal');
 
-var tasksRaw = JSON.parse('https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json');
+var tasksRaw = JSON.parse(https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json);
 var taskList = [];
 
 function run() {
