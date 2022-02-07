@@ -15,49 +15,59 @@ const btnReveal = document.querySelector('.btn__reveal');
 
 // var tasksRaw = []
 
-function getJSON(){
+// tasksRaw = getJSON();
+
+// function getJSON(){
+
+var taskList = [];
+
+
+function run() {
 	var ourRequest = new XMLHttpRequest();
 	ourRequest.open('GET', 'https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json');
 	ourRequest.onload = function(){
-		var tasks = JSON.parse(ourRequest.responseText);
-		return tasks;
-	};
-	ourRequest.send();
-}
+		tasksRaw = JSON.parse(ourRequest.responseText);
+		console.log(tasksRaw[0]);
+		console.log(tasksRaw);
+		var e = document.getElementById("heatSelect");
+		var heatLevel = e.value;
+		var e = document.getElementById("numPlayersSelect");
+		var numPlayers = e.value;
+		var e = document.getElementById("types");
+		var playerType = e.value;
 
-tasksRaw = getJSON();
-console.log(tasksRaw);
-var taskList = [];
-
-function run() {
-	var e = document.getElementById("heatSelect");
-	var heatLevel = e.value;
-	var e = document.getElementById("numPlayersSelect");
-	var numPlayers = e.value;
-	var e = document.getElementById("types");
-	var playerType = e.value;
-
-	for (var i = 0; i < tasksRaw.length; i++) {
-		var obj = tasksRaw[i];
-		if (obj['heat'] == heatLevel) {
-			for (var j = 0; j < obj['playerNum'].length; j++) {
-				if (obj['playerNum'][j] == numPlayers) {
-					for (var k = 0; k < obj['players'].length; k++) {
-						if (obj['players'][k] == playerType) {
-							taskList.push(obj['task']);
+		for (var i = 0; i < tasksRaw.length; i++) {
+			var obj = tasksRaw[i];
+			if (obj['heat'] == heatLevel) {
+				for (var j = 0; j < obj['playerNum'].length; j++) {
+					if (obj['playerNum'][j] == numPlayers) {
+						for (var k = 0; k < obj['players'].length; k++) {
+							if (obj['players'][k] == playerType) {
+								taskList.push(obj['task']);
+							}
 						}
 					}
 				}
 			}
-		}
+		};
+		genColour();
 	};
-	genColour();
+	ourRequest.send();
+};
+
+function getColor() { 
+  return "hsl(" + 360 * Math.random() + ',' +
+             (25 + 70 * Math.random()) + '%,' + 
+             (85 + 10 * Math.random()) + '%)'
 };
 
 function genColour() {
-	randomColor = Math.floor(Math.random()*16777215).toString(16);
-	document.getElementById('card__front').style.backgroundColor = "#" + randomColor;
-	document.getElementById('card__back').style.backgroundColor = "#" + randomColor;
+	// var hue = Math.floor(Math.random() * 360);
+	// var randomColor = 'hsl(' + hue + ', 100%, 80%)';
+	randomColor = getColor();
+	console.log(randomColor);
+	document.getElementById('card__front').style.backgroundColor = randomColor;
+	document.getElementById('card__back').style.backgroundColor = randomColor;
 
 	document.getElementById('card__content').style.display = "block";
 	document.getElementById('gameSetup').style.display = "none";
@@ -69,13 +79,13 @@ function flipCard() {
 
 function addTask() {
 	task = taskList.splice(Math.floor(Math.random()*taskList.length), 1);
-	document.getElementById('card__back__content').innerHTML ="<h1>" + task + "</h1>";
+	document.getElementById('card__back__content').innerHTML ="<h4>" + task + "</h4>";
 	document.getElementById('btn__reveal').style.display = "none";
 	document.getElementById('btn__complete').style.display = "inline";
 }
 
 function cardBack() {
-	document.getElementById('card__back__content').innerHTML ="<h1>" + task + "</h1>";
+	document.getElementById('card__back__content').innerHTML ="<h4>" + task + "</h4>";
 	
 }
 
