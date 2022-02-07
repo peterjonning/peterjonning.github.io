@@ -80,6 +80,9 @@ main {
   display: none;
 }
 
+.btn__go{
+  width: 80%;
+}
 
 h1 {
   opacity: 1;

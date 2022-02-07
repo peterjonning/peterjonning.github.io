@@ -8,7 +8,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="tasks.json"></script>
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -54,7 +57,7 @@
 			<br>
 			<br>
 			<br>
-			<button type="button" class="btn btn-lg btn-outline-success" onclick="run()">
+			<button type="button" class="btn btn-success text-center btn__go" onclick="run()">
 				Ready!
 			</button>
 		</div>
@@ -92,6 +95,12 @@
 		</div>
 	</div>
   <script type="text/javascript">
+	// $.getJSON("https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json", function(tasksRaw) {
+ //  		});
+
+ //  	var tasksRaw = new ajaxRequest()
+
+
   	$(document).ready(function () {
   		$("#numPlayersSelect").change(function () {
   			var val = $(this).val();

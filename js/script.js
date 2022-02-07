@@ -2,7 +2,31 @@ const cardContent = document.querySelector('.card__content');
 const btnComplete = document.querySelector('.btn__complete');
 const btnReveal = document.querySelector('.btn__reveal');
 
-var tasksRaw = JSON.parse(https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json);
+// var tasksRaw = JSON.parse(https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json);
+
+// var tasksRaw = JSON.stringify('https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json'); //(with path)
+// https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json
+
+// fetch("https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json")
+// .then(response => {
+//    return response.json();
+// })
+// .then(data => tasksRaw = data);
+
+// var tasksRaw = []
+
+function getJSON(){
+	var ourRequest = new XMLHttpRequest();
+	ourRequest.open('GET', 'https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json');
+	ourRequest.onload = function(){
+		var tasks = JSON.parse(ourRequest.responseText);
+		return tasks;
+	};
+	ourRequest.send();
+}
+
+tasksRaw = getJSON();
+console.log(tasksRaw);
 var taskList = [];
 
 function run() {
