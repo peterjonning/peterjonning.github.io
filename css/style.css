@@ -24,8 +24,6 @@ main {
   width: 350px;
   height: 250px;
   perspective: 600px;
-/*  padding-left: 3px;
-  padding-right: 3px;*/
 }
 
 .card__content {

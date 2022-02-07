@@ -2,33 +2,13 @@ const cardContent = document.querySelector('.card__content');
 const btnComplete = document.querySelector('.btn__complete');
 const btnReveal = document.querySelector('.btn__reveal');
 
-// var tasksRaw = JSON.parse(https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json);
-
-// var tasksRaw = JSON.stringify('https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json'); //(with path)
-// https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json
-
-// fetch("https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(data => tasksRaw = data);
-
-// var tasksRaw = []
-
-// tasksRaw = getJSON();
-
-// function getJSON(){
-
 var taskList = [];
-
 
 function run() {
 	var ourRequest = new XMLHttpRequest();
 	ourRequest.open('GET', 'https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json');
 	ourRequest.onload = function(){
 		tasksRaw = JSON.parse(ourRequest.responseText);
-		console.log(tasksRaw[0]);
-		console.log(tasksRaw);
 		var e = document.getElementById("heatSelect");
 		var heatLevel = e.value;
 		var e = document.getElementById("numPlayersSelect");
@@ -62,10 +42,7 @@ function getColor() {
 };
 
 function genColour() {
-	// var hue = Math.floor(Math.random() * 360);
-	// var randomColor = 'hsl(' + hue + ', 100%, 80%)';
 	randomColor = getColor();
-	console.log(randomColor);
 	document.getElementById('card__front').style.backgroundColor = randomColor;
 	document.getElementById('card__back').style.backgroundColor = randomColor;
 
