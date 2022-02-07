@@ -58,7 +58,7 @@
 			<br>
 			<br>
 			<div class="col text-center">
-				<button type="button" class="btn btn-success text-center btn__go" onclick="run()">
+				<button type="button" class="btn btn-success btn__go" onclick="run()">
 					Ready!
 				</button>
 			</div>
@@ -88,6 +88,25 @@
 		</div>
 	</div>
 </div>
+	<div class="col text-center">
+		<input type="button" id="rulesBtn" class="btn btn-outline-secondary" value="Show Rules" onclick="showRules()" />
+		<div class="col-md-12" style="display:none;" id="rules">
+			<!-- <p class="text-muted"> -->
+				<h3>How to play</h3>
+				<h5>Heat Levels</h5>
+				1 = No contact fun
+				<br>2 = Contact all above clothes inc. kissing - no nuidty required
+				<br>3 = Touching, licking, sucking - full nuidty could occour
+				<br>4 = No holes bared
+				<h5>Setup</h5>
+				Configure the game to the number of people you have playing.
+				<br>Click the Ready button
+				<h5>Game Play</h5>
+				Take it in turns to turn over a card, and reveal the task. Complete the task or say pass.
+				<h3>Have fun!</h3>
+			<!-- </p> -->
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<p class="text-muted text-center">
@@ -96,12 +115,6 @@
 		</div>
 	</div>
   <script type="text/javascript">
-	// $.getJSON("https://raw.githubusercontent.com/peterjonning/peterjonning.github.io/main/tasks.json", function(tasksRaw) {
- //  		});
-
- //  	var tasksRaw = new ajaxRequest()
-
-
   	$(document).ready(function () {
   		$("#numPlayersSelect").change(function () {
   			var val = $(this).val();

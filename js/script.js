@@ -48,6 +48,10 @@ function genColour() {
 
 	document.getElementById('card__content').style.display = "block";
 	document.getElementById('gameSetup').style.display = "none";
+  document.getElementById('rules').style.display = "none";
+  document.getElementById('rulesBtn').style.display = "none";
+
+
 }
 
 function flipCard() {
@@ -74,6 +78,9 @@ function completed() {
 	document.getElementById('card__back__content').innerHTML ="";
 }
 
-	
+function showRules() {
+   document.getElementById('rules').style.display = "block";
+}
+
 btnComplete.addEventListener('click', completed);
 btnReveal.addEventListener('click', addTask);
